@@ -19,8 +19,14 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-        <a class="navbar-brand" href="<%= root_url %>"/>Home</a>
-        </div>
+          <a class="navbar-brand" href="<%= root_url %>"/>Home</a>
+          <% if logged_in?%>
+            <a class="navbar-brand" href="<%= logout_path %>"/>Log Out</a>
+          <% else %>
+            <a class="navbar-brand" href="<%= new_user_path %>"/>Sign Up</a>
+            <a class="navbar-brand" href="<%= signin_path %>"/>Sign In</a>
+          <% end %>
+          </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
            <!--  nav here -->
@@ -28,8 +34,15 @@
         </div><!--/.nav-collapse -->
       </div>
     </div>
-
-    <!-- content -->
+      <% if alert %>
+      <div id="notice_wrapper">
+        <p class="alert"><%= alert %></p>
+      </div>
+      <% elsif notice %>
+      <div id="notice_wrapper">
+        <p class="notice"><%= notice %></p>
+      </div>
+      <% end %>
     <div class="container"  role="main">
       <%= yield %>
     </div>

@@ -1,0 +1,18 @@
+<% if logged_in? %>
+
+  <% if current_user.admin %>
+    <p><strong>ADMIN</strong></p>
+  <% end %>
+  Name:
+  <%= current_user.name %>
+  Mood:
+  <%= current_user.mood %>
+  Height:
+  <%= current_user.height %>
+  Tickets:
+  <%= current_user.tickets %>
+  <%= link_to 'Edit', edit_user_path(current_user) %>
+  <%= link_to 'Log Out', logout_path %>
+  <%= link_to 'See attractions', attractions_path %>
+
+<% end %>
